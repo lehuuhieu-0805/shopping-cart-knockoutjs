@@ -1,0 +1,110 @@
+<section style="padding-top: 20px">
+    <div class="panel panel-default">
+        <!-- Default panel contents-->
+        <div class="panel-heading" style="display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex">
+                <span class="btn btn-success" style="margin-right:20px" data-bind="click: add_product">Add</span>
+                <div class="input-group" style="display:flex">
+                    <input type="text" class="form-control" data-bind="value: searchValue" />
+                    <button class="btn btn-primary" data-bind="click: search_by_name">Search</button>
+                </div>
+            </div>
+            <div style="float: right">
+                <label>Category</label>
+                <select data-bind="
+                        options: categories,
+                        value: selectedCategory,
+                        optionsText: 'Name',
+                        optionsValue: 'Id',
+                        optionsCaption: 'Choose category'
+                "></select>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Category</th>
+                    <th style="width: 200px">Config</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: products">
+                <tr>
+                    <td data-bind="text: Id"></td>
+                    <td data-bind="text: Name, style: {backgroundColor: Quantity <= 0 ? 'red' : ''}"></td>
+                    <td data-bind="text: Price"></td>
+                    <td data-bind="text: Quantity"></td>
+                    <!-- ko if: Category -->
+                    <td data-bind="text: Category.Name"></td>
+                    <!-- /ko -->
+                    <!-- ko ifnot: Category -->
+                    <td>undefined</td>
+                    <!-- /ko -->
+                    <td style="min-width: 300px">
+                        <button class="btn btn-warning" data-bind="click: $parent.update_product">Edit</button>
+                        <button class="btn btn-danger" data-bind="click: $parent.delete_product">Delete</button>
+                        <!-- ko if: Quantity > 0 -->
+                        <button class="btn btn-primary" data-bind="click: $parent.add_to_cart">Add to cart</button>
+                        <!-- /ko -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul data-bind="foreach: Array.from({length: totalPage()})" class="pagination" style="float:right; margin:auto">
+        <li class="page-item" data-bind="css: {active: $parent.currentPage() === $index() + 1}"><a data-bind="click: $parent.paging.bind($data, $index() + 1), text: $index() + 1" class="page-link"></a></li>
+    </ul>
+
+
+
+    <div style="padding-top: 20px">
+        <section style="padding-top: 20px">
+            <div class="panel panel-default">
+                <!-- Default panel contents-->
+                <div class="panel-heading"></div>
+
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: cartItems">
+                        <tr>
+                            <td data-bind="text: $index() + 1"></td>
+                            <td data-bind="text: Product.Name"></td>
+                            <td style="display: flex; align-items: center">
+                                <svg data-bind="click: $parent.minus_product_quantity" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                </svg>
+                                <div style="padding: 10px" data-bind="text: TotalQuantity"></div>
+                                <svg data-bind="click: $parent.increase_product_quantity" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                                </svg>
+                            </td>
+                            <td data-bind="text: TotalPrice"></td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center">Total:</th>
+                            <th data-bind="text: cart().TotalQuantity"></th>
+                            <th data-bind="text: cart().TotalPrice"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </section>
+    </div>
+</section>

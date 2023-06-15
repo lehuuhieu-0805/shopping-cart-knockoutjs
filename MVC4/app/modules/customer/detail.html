@@ -1,0 +1,38 @@
+﻿<div class="">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bind="click: cancel">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input class="form-control" placeholder="Enter First Name" data-bind="value: customer.FirstName">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input class="form-control" placeholder="Enter Last Name" data-bind="value: customer.LastName">
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input class="form-control" placeholder="Enter City"  data-bind="value: customer.City">
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input class="form-control" placeholder="Enter Country" data-bind="value: customer.Country">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input class="form-control" placeholder="Enter Phone" data-bind="value: customer.Phone">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-bind="click: cancel">Close</button>
+                <button type="button" class="btn btn-primary" data-bind="click: save">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

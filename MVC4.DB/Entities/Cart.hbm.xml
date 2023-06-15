@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="MVC4.DB" namespace="MVC4.DB" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="MVC4.DB.Entities.Cart, MVC4.DB" table="`Cart`">
+		<id name="Id" type="int">
+			<!--<generator class="assigned" />-->
+			<generator class="native"/>
+			<!--using Identify Increment-->
+		</id>
+		<property name="TotalPrice"/>
+		<property name="TotalQuantity"/>
+		<bag name="CartItems" cascade="all-delete-orphan" inverse="true">
+			<key column="CartId"/>
+			<one-to-many class="MVC4.DB.Entities.CartItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

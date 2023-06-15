@@ -1,0 +1,53 @@
+﻿<div class="">
+    <div class="modal-dialog modal-lg modal-dialog-centered" style="min-width: 70% !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bind="click: cancel">&times;</button>
+                <h4 class="modal-title">Modal Array Observables</h4>
+            </div>
+            <div class="panel-heading">
+                <span class="btn btn-success open-add" data-bind="click: add_customerarray">Add</span>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Full Name</th>
+                            <th style="width: 200px;">Config</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: people">
+                        <tr>
+
+                            <td data-bind="text: FirstName"></td>
+                            <td data-bind="text: LastName"></td>
+                            <td data-bind="text: FullName"></td>
+                            <td>
+                                <button class="btn btn-warning" data-bind="click: $root.edit_customerArray">Edit</button>
+                                <button class="btn btn-danger" data-bind="click: $root.delete_customer">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--<form data-bind="foreach: people">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input class="form-control" placeholder="Enter First Name" data-bind="value: FirstName">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input class="form-control" placeholder="Enter Last Name" data-bind="value: LastName">
+                    </div>
+                    <div class="form-group">
+                        <label>FullName</label>
+                        <span class="form-control" data-bind="text: FullName">
+                        </span>
+                    </div>
+                </form>-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

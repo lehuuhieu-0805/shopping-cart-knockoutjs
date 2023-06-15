@@ -1,0 +1,37 @@
+﻿<section style="padding-top: 20px;">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <span class="btn btn-success" data-bind="click: add_customer">Add</span>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Phone</th>
+                    <th style="width: 200px;">Config</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: customers">
+                <tr>
+                    <td data-bind="text: Id"></td>
+                    <td data-bind="text: FirstName"></td>
+                    <td data-bind="text: LastName"></td>
+                    <td data-bind="text: City"></td>
+                    <td data-bind="text: Country"></td>
+                    <td data-bind="text: Phone"></td>
+                    <td>
+                        <button class="btn btn-warning" data-bind="click: $root.edit_customer">Edit</button>
+                        <button class="btn btn-danger" data-bind="click: $root.delete_customer">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

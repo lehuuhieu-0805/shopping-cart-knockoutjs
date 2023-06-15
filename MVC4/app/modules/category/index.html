@@ -1,0 +1,29 @@
+﻿<section style="padding-top:20px">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <span class="btn btn-success" data-bind="click: add_category">Add</span>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Config</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: categories">
+                <tr>
+                    <td data-bind="text: Id"></td>
+                    <td data-bind="text: Name"></td>
+                    <td>
+                        <button class="btn btn-warning" data-bind="click: $parent.update_category">Edit</button>
+                        <button class="btn btn-danger" data-bind="click: $parent.delete_category">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

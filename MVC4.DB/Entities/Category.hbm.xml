@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="MVC4.DB" namespace="MVC4.DB" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="MVC4.DB.Entities.Category, MVC4.DB" table="`Category`">
+		<id name="Id" type="int">
+			<!--<generator class="assigned" />-->
+			<generator class="native"/>
+			<!--using Identify Increment-->
+		</id>
+		<property name="Name"/>
+		<bag name="Products" cascade="all-delete-orphan" inverse="true">
+			<key column="CategoryId"/>
+			<one-to-many class="MVC4.DB.Entities.Product"/>
+		</bag>
+	</class>
+</hibernate-mapping>
